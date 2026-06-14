@@ -1,0 +1,9 @@
+
+# Needed packages
+
+fastapi
+uvicorn
+pandas
+sklearn
+xgboost
+joblib
