@@ -2,13 +2,18 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import pandas as pd 
 import joblib 
-
+import os
 
 app =FastAPI()
 
-heart_pipeline=joblib.load("../models/heart_pipline.pkl")
-diabetes_pipeline=joblib.load("../models/diabetes_pipline.pkl")
-cancer_pipeline=joblib.load("../models/cancer_pipline.pkl")
+__file__=""
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+model_file = os.path.join(BASE_DIR, "models", "heart_pipline.pkl")
+heart_pipeline=joblib.load(model_file)
+model_file = os.path.join(BASE_DIR, "models", "diabetes_pipline.pkl")
+diabetes_pipeline=joblib.load(model_file)
+model_file = os.path.join(BASE_DIR, "models", "cancer_pipline.pkl")
+cancer_pipeline=joblib.load(model_file)
 
 class HeartDiseaseInput(BaseModel):
     age: int
